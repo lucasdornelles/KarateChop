@@ -3,27 +3,29 @@ package com.kata.karatechop;
 public class BinarySearch {
 
     public int indexOf(int item, Integer[] array) {
-        int searchIndex = (array.length)/2;
-        int upperIndex = array.length - 1;
-        int searchItem = array[searchIndex];
+        int searchIndex = 0;
+        int upperIndex = array.length;
+        int lowerIndex = 0;
+        int searchItem;
         int newSearchIndex;
         boolean endOfArray = false;
         while (!endOfArray) {
+            newSearchIndex = (upperIndex + lowerIndex)/2;
+            searchItem = array[newSearchIndex];
             if (searchItem > item) {
-                newSearchIndex = (searchIndex)/2;
-                searchItem = array[newSearchIndex];
                 if (newSearchIndex == searchIndex) endOfArray = true;
                 else {
-                    upperIndex = searchIndex;
+                    upperIndex = newSearchIndex;
                     searchIndex = newSearchIndex;
                 }
             } else if (searchItem < item) {
-                newSearchIndex = (searchIndex + upperIndex)/2;
-                searchItem = array[newSearchIndex];
                 if (newSearchIndex == searchIndex) endOfArray = true;
-                else searchIndex = newSearchIndex;
+                else {
+                    lowerIndex = newSearchIndex;
+                    searchIndex = newSearchIndex;
+                }
             } else if (searchItem == item) {
-                return searchIndex;
+                return newSearchIndex;
             }
         } return -1;
     }
