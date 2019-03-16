@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 public class BinarySearchTest {
 
     BinarySearch binarySearch;
-    private Integer[] array;
 
     @Before
     public void setBinarySearch () {
@@ -17,9 +16,12 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void longEvenArray () {
-        array = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8};
+    public void longOddArray () {
+        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         assertEquals(0, binarySearch.indexOf(1, array));
+        assertEquals(1, binarySearch.indexOf(2, array));
+
+
 
     }
 
